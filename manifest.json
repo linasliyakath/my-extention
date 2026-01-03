@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Center Focus Dock",
+  "version": "1.0",
+  "description": "Minimal animated dock new tab",
+
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

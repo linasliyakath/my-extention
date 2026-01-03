@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New tab</title>
+
+  <link rel="icon" type="imgage/png" href="./icons/cloud (2).png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #0b0b0b;
+      font-family: "Inter", system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    .motivation {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 26px;
+      color: #fff;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input {
+      width: 400px;
+      max-width: 90%;
+      padding: 15px 25px;
+      font-size: 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #8a8a8a;
+    }
+
+    .dock-container {
+      margin-top: 20px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+    }
+
+    .dock-track {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .app-icon {
+      width: 44px;
+      height: 44px;
+      opacity: 0.45;
+      filter: grayscale(70%);
+      cursor: pointer;
+      transition:
+        transform 0.35s cubic-bezier(.25,1,.5,1),
+        opacity 0.3s,
+        filter 0.3s;
+    }
+
+    .app-icon.left,
+    .app-icon.right {
+      transform: scale(0.9);
+    }
+
+    .app-icon.active {
+      transform: scale(1.45) translateY(-8px);
+      opacity: 1;
+      filter: grayscale(0%);
+      z-index: 10;
+    }
+
+    .dock-track.slide-left-1,
+    .dock-track.slide-left-2 {
+      animation: slideLeft 0.35s cubic-bezier(.25,1,.5,1) forwards;
+    }
+
+    .dock-track.slide-right-1,
+    .dock-track.slide-right-2 {
+      animation: slideRight 0.35s cubic-bezier(.25,1,.5,1) forwards;
+    }
+
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(45px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(-45px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="motivation">
+    you're already 1% better than
+    <span style="color:#ffea00">yesterday</span>.
+  </div>
+
+  <div class="main">
+    <form action="https://www.google.com/search" method="GET">
+      <input type="text" name="q" placeholder="Search..." autofocus />
+    </form>
+
+    <div class="dock-container">
+      <div class="dock-track" id="dock"></div>
+    </div>
+  </div>
+  <script src="dock.js"></script>
+</body>
+</html>
