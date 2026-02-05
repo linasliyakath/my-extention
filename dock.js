@@ -6,9 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     { icon: "./icons/gmail (1).png", link: "https://mail.google.com/mail/u/1/#inbox" },
     { icon: "./icons/youtube (2).png", link: "https://youtube.com" },
     { icon: "./icons/chatgpt.png", link: "https://chatgpt.com" },
-    { icon: "./icons/typing.png", link: "#" },
+    { icon: "./icons/typing.png", link: "https://devxtra.edclub.com/sportal/" },
     { icon: "./icons/gmail.png", link: "https://mail.google.com" },
-    { icon: "./icons/github (3).png", link: "https://github.com" }
+    { icon: "./icons/github (3).png", link: "https://github.com" },
+    { icon: "icons/spotify (1).png",link:"https://open.spotify.com" }
   ];
 
   let centerIndex = 0;
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderDock(direction = null) {
     dock.className = "dock-track";
-    void dock.offsetHeight;
+    void dock.offsetHeight; // force reflow
 
     if (direction) {
       dock.classList.add(
@@ -59,7 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
           renderDock(dir);
         } else if (app.link !== "#") {
-          chrome.tabs.create({ url: app.link });
+          // ✅ OPEN IN SAME TAB (CRITICAL FIX)
+          window.location.href = app.link;
         }
       });
 
